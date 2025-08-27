@@ -6,12 +6,12 @@ import { Room } from "./Room";
 import { HeroLight } from "./HeroLight";
 import { Suspense } from "react";
 
-const HeroExperience = () => {
+const HeroExperience = ({ visible = true }: { visible?: boolean }) => {
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
   const isTablet = useMediaQuery({ query: "(max-width: 1024px)" });
 
   return (
-    <Canvas camera={{ position: [0, 0, 15], fov: 45 }}>
+    <Canvas camera={{ position: [0, 0, 15], fov: 45 }} frameloop="demand" dpr={[1, 1.4]}>
       {/* deep blue ambient */}
       <ambientLight intensity={0.2} color="#1a1a40" />
       {/* Configure OrbitControls to disable panning and control zoom based on device type */}
@@ -25,13 +25,15 @@ const HeroExperience = () => {
       />
 
       <Suspense fallback={null}>
-        <HeroLight />
-        <group
-          scale={isMobile ? 0.7 : 1}
-          position={[0, -3.5, 0]}
-          rotation={[0, -Math.PI / 4, 0]}
-        >
-          <Room />
+        <group visible={visible}>
+          <HeroLight />
+          <group
+            scale={isMobile ? 1 : 1.2}
+            position={[0, -3.5, 0]}
+            rotation={[0, -Math.PI / 4, 0]}
+          >
+            <Room />
+          </group>
         </group>
       </Suspense>
     </Canvas>

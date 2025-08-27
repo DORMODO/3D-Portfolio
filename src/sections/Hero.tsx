@@ -1,16 +1,32 @@
+import React, { useEffect, useRef, useState } from "react";
 import { type Word, words } from "@/constants";
+// HeroExperience will be lazy-loaded below to reduce initial bundle and keep Canvas mounted
 import Button from "@/components/Button";
-// import HeroExperience from "@/components/HeroModels/HeroExperience";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
-import React from "react";
 
 const HeroExperience = React.lazy(
   () => import("@/components/HeroModels/HeroExperience"),
 );
 
 export const Hero = () => {
+  // Intersection observer to toggle visibility (do NOT unmount 3D canvas)
+  const hero3dRef = useRef<HTMLDivElement | null>(null);
+  const [heroVisible, setHeroVisible] = useState(true);
+
+  useEffect(() => {
+    if (!hero3dRef.current) return;
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => setHeroVisible(entry.isIntersecting));
+      },
+      { root: null, threshold: 0.1 },
+    );
+    obs.observe(hero3dRef.current);
+    return () => obs.disconnect();
+  }, []);
+
   useGSAP(() => {
     gsap.fromTo(
       ".hero-text h1",
@@ -80,10 +96,10 @@ export const Hero = () => {
         </header>
 
         {/*Right: 3D Content */}
-        <figure>
-          <div className="hero-3d-layout">
+        <figure className="hero-3d-layout">
+          <React.Suspense fallback={null}>
             <HeroExperience />
-          </div>
+          </React.Suspense>
         </figure>
       </div>
 
