@@ -88,8 +88,8 @@ Make sure you have the following installed on your machine:
 **Cloning the Repository**
 
 ```bash
-git clone https://github.com/adrianhajdin/3d-portfolio.git
-cd 3d-portfolio
+git clone https://github.com/DORMODO/3D-Portfolio
+cd 3D-Portfolio
 ```
 
 **Installation**
@@ -124,19 +124,3 @@ Open [http://localhost:5173](http://localhost:5173/) in your browser to view the
 ## <a name="links">🔗 Assets and Snippets</a>
 
 Assets and snippets used in the project can be found in the **[video kit](https://jsm.dev/pfolio25-kit)**.
-
-<a href="https://jsm.dev/pfolio25-kit" target="_blank">
-  <img src="public/images/readme-video-kit.png" alt="Video Kit Banner">
-</a>
-
-
-## <a name="more">🚀 More</a>
-
-**Advance your skills with JSM Pro Courses**
-
-Enjoyed creating this project? Dive deeper into our PRO courses for a richer learning adventure. They're packed with
-detailed explanations, cool features, and exercises to boost your skills. Give it a go!
-
-<a href="https://beta.jsmastery.pro/" target="_blank">
-  <img src="public/images/readme-bottom.png" alt="Project Banner">
-</a>
