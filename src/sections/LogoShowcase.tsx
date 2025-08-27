@@ -1,7 +1,7 @@
-import { LogoIcon } from "./../components/LogoIcon";
 import { logoIconsList } from "@/constants";
+import { LogoIcon as SimpleLogoIcon } from "@/components/LogoIcon";
 
-const LogoIcon = ({ icon }) => {
+const LocalLogoIcon = ({ icon }: { icon: any }) => {
   return (
     <div className="flex-none flex-center marquee-item">
       <img src={icon.imgPath} alt={icon.name} />
@@ -18,11 +18,11 @@ export const LogoShowcase = () => {
       <div className="marquee h-52">
         <div className="marquee-box md:gap-12 gap-5">
           {logoIconsList.map((icon, index) => (
-            <LogoIcon key={index} icon={icon} />
+            <LocalLogoIcon key={index} icon={icon} />
           ))}
 
           {logoIconsList.map((icon, index) => (
-            <LogoIcon key={index} icon={icon} />
+            <LocalLogoIcon key={`dup-${index}`} icon={icon} />
           ))}
         </div>
       </div>

@@ -23,10 +23,11 @@ const Contact = () => {
     setLoading(true); // Show loading state
 
     try {
+      if (!formRef.current) throw new Error("Form ref is null");
       await emailjs.sendForm(
         import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
-        formRef.current,
+        formRef.current as unknown as string,
         import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
       );
 
@@ -88,7 +89,7 @@ const Contact = () => {
                     value={form.message}
                     onChange={handleChange}
                     placeholder="How can I help you?"
-                    rows="5"
+                    rows={5}
                     required
                   />
                 </div>
