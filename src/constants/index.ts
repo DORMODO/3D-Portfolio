@@ -274,7 +274,7 @@ const testimonials: {
   },
 ];
 
-const socialImgs: { name: string; imgPath: string }[] = [
+const socialImgs: { name: string; imgPath: string; link?: string }[] = [
   {
     name: "linkedin",
     imgPath: "/images/linkedin.png",

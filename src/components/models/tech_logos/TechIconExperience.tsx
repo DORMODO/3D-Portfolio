@@ -7,7 +7,7 @@ import * as THREE from "three";
 type TechModel = {
   modelPath: string;
   scale: number;
-  rotation: [number, number, number];
+  rotation: number[]; // allow number[] for flexibility
   name: string;
 };
 
@@ -30,7 +30,7 @@ export const TechIconExperience = ({ model }: { model: TechModel }) => {
       <Environment preset="city" />
 
       <Float speed={6} rotationIntensity={0.5} floatIntensity={0.9}>
-        <group scale={model.scale} rotation={model.rotation}>
+        <group scale={model.scale} rotation={model.rotation as [number, number, number]}>
           {scene?.scene && <primitive object={scene.scene} />}
         </group>
       </Float>

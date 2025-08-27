@@ -8,7 +8,8 @@ export const ExperienceSection = () => {
   useGSAP(() => {
     // Loop through each timeline card and animate them in
     // as the user scrolls to each card
-    gsap.utils.toArray(".timeline-card").forEach((card) => {
+  const cards = gsap.utils.toArray(".timeline-card") as unknown as HTMLElement[];
+  cards.forEach((card) => {
       // Animate the card coming in from the left
       // and fade in
       gsap.from(card, {
@@ -60,7 +61,8 @@ export const ExperienceSection = () => {
 
     // Loop through each expText element and animate them in
     // as the user scrolls to each text element
-    gsap.utils.toArray(".expText").forEach((text) => {
+  const texts = gsap.utils.toArray(".expText") as unknown as HTMLElement[];
+  texts.forEach((text) => {
       // Animate the text opacity from 0 to 1
       // and move it from the left to its final position
       // over 1 second with a power2 ease-in-out curve
@@ -97,10 +99,10 @@ export const ExperienceSection = () => {
         />
         <div className="mt-32 relative">
           <div className="relative z-50 xl:space-y-32 space-y-10">
-            {expCards.map((card) => (
+    {expCards.map((card, idx) => (
               <div key={card.title} className="exp-card-wrapper">
                 <div className="xl:w-2/6">
-                  <GlowCard card={card}>
+      <GlowCard card={card} index={idx}>
                     <div>
                       <img src={card.imgPath} alt="exp-img" />
                     </div>

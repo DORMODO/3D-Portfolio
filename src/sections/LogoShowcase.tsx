@@ -1,5 +1,4 @@
 import { logoIconsList } from "@/constants";
-import { LogoIcon as SimpleLogoIcon } from "@/components/LogoIcon";
 
 const LocalLogoIcon = ({ icon }: { icon: any }) => {
   return (

@@ -4,7 +4,7 @@ import Button from "@/components/Button";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
-import React, { Suspense } from "react";
+import React from "react";
 
 const HeroExperience = React.lazy(
   () => import("@/components/HeroModels/HeroExperience"),
