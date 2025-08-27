@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import { type Word, words } from "@/constants";
 // HeroExperience will be lazy-loaded below to reduce initial bundle and keep Canvas mounted
 import Button from "@/components/Button";
@@ -11,22 +11,6 @@ const HeroExperience = React.lazy(
 );
 
 export const Hero = () => {
-  // Intersection observer to toggle visibility (do NOT unmount 3D canvas)
-  const hero3dRef = useRef<HTMLDivElement | null>(null);
-  const [heroVisible, setHeroVisible] = useState(true);
-
-  useEffect(() => {
-    if (!hero3dRef.current) return;
-    const obs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => setHeroVisible(entry.isIntersecting));
-      },
-      { root: null, threshold: 0.1 },
-    );
-    obs.observe(hero3dRef.current);
-    return () => obs.disconnect();
-  }, []);
-
   useGSAP(() => {
     gsap.fromTo(
       ".hero-text h1",
